@@ -22,52 +22,117 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+# Projeto NestJS - Exercício e Consulta
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Este é um projeto em NestJS desenvolvido como base para exercícios e consulta. O projeto implementa operações básicas CRUD (Create, Read, Update, Delete) para gerenciar uma entidade `Person`, incluindo listagem, busca por ID, salvamento, atualização e exclusão de pessoas.
 
-## Installation
+## Requisitos
+
+- Node.js (v20+)
+- npm (ou yarn)
+
+## Instalação
+
+1. **Clone o repositório:**
+
+   ```bash
+   git@github.com:RobsonFe/CRUD-NestJS.git
+   cd crud
+   ```
+
+2. **Instale as dependências:**
+
+   Utilizando npm:
+
+   ```bash
+   npm install
+   ```
+
+   ou utilizando yarn:
+
+   ```bash
+   yarn
+   ```
+
+## Configuração
+
+- O projeto utiliza o NestJS com TypeScript para facilitar o desenvolvimento e manutenção.
+- O serviço `PeopleService` gerencia a entidade `Person`, com operações CRUD implementadas.
+- O controlador `PeopleController` define rotas para acessar e manipular os dados de pessoas.
+
+## Uso
+
+Para executar o servidor localmente, utilize o seguinte comando:
 
 ```bash
-$ npm install
+npm run start:dev
 ```
 
-## Running the app
+ou
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+yarn start:dev
 ```
 
-## Test
+Isso iniciará o servidor localmente em `http://localhost:3000`.
+
+### Rotas Disponíveis
+
+- **Listar todas as pessoas:**
+
+  ```
+  GET http://localhost:3000/people
+  ```
+
+- **Buscar pessoa por ID:**
+
+  ```
+  GET http://localhost:3000/people/buscar/:id
+  ```
+
+- **Salvar uma nova pessoa:**
+
+  ```
+  POST http://localhost:3000/people/salvar
+  Body: { "id": 1, "name": "Nome da Pessoa" }
+  ```
+
+- **Atualizar pessoa por ID:**
+
+  ```
+  PUT http://localhost:3000/people/atualizar/:id
+  Body: { "name": "Novo Nome da Pessoa" }
+  ```
+
+- **Excluir pessoa por ID:**
+
+  ```
+  DELETE http://localhost:3000/people/deletar/:id
+  ```
+
+### Exemplo de Uso
 
 ```bash
-# unit tests
-$ npm run test
+# Salvar nova pessoa
+curl -X POST -H "Content-Type: application/json" -d '{ "id": 1, "name": "João" }' http://localhost:3000/people/salvar
 
-# e2e tests
-$ npm run test:e2e
+# Listar todas as pessoas
+curl http://localhost:3000/people
 
-# test coverage
-$ npm run test:cov
+# Buscar pessoa por ID
+curl http://localhost:3000/people/buscar/1
+
+# Atualizar pessoa por ID
+curl -X PUT -H "Content-Type: application/json" -d '{ "name": "João da Silva" }' http://localhost:3000/people/atualizar/1
+
+# Deletar pessoa por ID
+curl -X DELETE http://localhost:3000/people/deletar/1
 ```
 
-## Support
+## Contribuições
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Contribuições são bem-vindas! Sinta-se à vontade para enviar pull requests para melhorias, correções de bugs ou novas funcionalidades.
 
-## Stay in touch
+## Licença
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+Este projeto está licenciado sob a [MIT License](LICENSE).
